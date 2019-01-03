@@ -3,6 +3,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Post extends Model
 {
     protected $fillable =['title','content'];
@@ -19,6 +20,6 @@ class Post extends Model
 
     public function Category(){
         // 投稿は1つのカテゴリーに属する
-        return $this->belongsTo('Category','cat_id');
+        return $this->belongsTo('App\Category','cat_id');
     }
 }
