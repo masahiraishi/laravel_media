@@ -10,7 +10,7 @@ class Post extends Model
 
     public function comments(){
 //        1記事に対してコメントは複数
-        return $this->hasMany('Comment','post_id');
+        return $this->hasMany('App\Comment','post_id');
     }
 
     public function user(){

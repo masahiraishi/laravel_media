@@ -15,5 +15,11 @@ class PostsController extends Controller
         return view('media.index',['posts'=>$posts]);
     }
 
+//    記事詳細
+    public function show($id)
+    {
+        $post = Post::find($id);
+        return view('media.single',['post'=>$post]);
+    }
 
 }
