@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use App\Category;
 
 class PostsController extends Controller
 {
@@ -20,6 +19,27 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         return view('media.single',['post'=>$post]);
+    }
+
+    public function create()
+    {
+        return view('media.create');
+    }
+
+    public function sotreBlog(Request $request)
+    {
+//        バリデーションの設定
+        $this->Validate($request,Post::$rules);
+
+        $post = new Post;
+        $post->title = $request->title;
+        $post->content = $request->contents;
+        $post->author_id = 0; // ひとまず
+        $post->cat_id = $request->cat_id;
+        $post->comment_count = 0; // 初期値
+        $post->save();
+
+        return back()->with('message','投稿が完了しました');
     }
 
 }
