@@ -19,7 +19,8 @@ class Dashboard extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','asc')
+            ->paginate(5);
 
 
         return view('admin.dashboard',['posts'=>$posts]);

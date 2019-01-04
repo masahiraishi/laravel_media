@@ -12,6 +12,6 @@
             <p><a href="{{url('media',$post->id)}}" class="btn btn-primary">続きを読む</a></p>
             <p>コメント数:&nbsp;{{$post->comment_count}}</p>
         @endforeach
-                {{--{{$posts->links()}}--}}
+                {{$posts->links()}}
     </div>
 @endsection
