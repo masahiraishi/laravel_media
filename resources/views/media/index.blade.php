@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="col-xs-8 col-xs-offset-2">
-        <a href="media/create" class="btn btn-success pull-right">記事を新しく登録する</a>
         @foreach($posts as $post)
 
             <h2>タイトル:&nbsp;{{$post->title}}
@@ -13,6 +12,6 @@
             <p><a href="{{url('media',$post->id)}}" class="btn btn-primary">続きを読む</a></p>
             <p>コメント数:&nbsp;{{$post->comment_count}}</p>
         @endforeach
-                {{--{{$posts->links()}}--}}
+                {{$posts->links()}}
     </div>
 @endsection

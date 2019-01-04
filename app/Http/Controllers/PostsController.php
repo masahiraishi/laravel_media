@@ -10,7 +10,8 @@ class PostsController extends Controller
     //投稿記事一覧
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','asc')
+            ->paginate(5);
         return view('media.index',['posts'=>$posts]);
     }
 
