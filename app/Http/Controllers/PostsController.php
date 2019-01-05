@@ -27,6 +27,7 @@ class PostsController extends Controller
         return view('media.create');
     }
 
+//    記事新規投稿
     public function sotreBlog(Request $request)
     {
 //        バリデーションの設定
