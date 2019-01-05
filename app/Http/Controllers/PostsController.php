@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Photo;
 
 class PostsController extends Controller
 {
     //投稿記事一覧
     public function index()
     {
-        $posts = Post::orderBy('created_at','asc')
+        $posts = Post::orderBy('created_at','desc')
             ->paginate(5);
         return view('media.index',['posts'=>$posts]);
     }
@@ -27,16 +28,26 @@ class PostsController extends Controller
         return view('media.create');
     }
 
-    public function sotreBlog(Request $request)
+//    記事新規投稿
+    public function storeBlog(Request $request)
     {
 //        バリデーションの設定
-        $this->Validate($request,Post::$rules);
+        $params = $this->Validate($request,Post::$rules);
+
+        $file = $params['image'];
+        $image = \Image::make(file_get_contents($file->getRealPath()));
+        $image->save(public_path().'/images/'.$file->hashName());
+
+        $photo = new Photo;
+        $photo->path = '/images/'.$file->hashName();
+        $photo->save();
 
         $post = new Post;
         $post->title = $request->title;
         $post->content = $request->contents;
         $post->author_id = 0; // ひとまず
         $post->cat_id = $request->cat_id;
+        $post->photo_id = $photo->id;
         $post->comment_count = 0; // 初期値
         $post->save();
 

@@ -5,9 +5,9 @@
         <h1>投稿ページ</h1>
 
         {{--投稿完了時にフラッシュメッセージを表示--}}
-{{--        @include('common.error')--}}
+        @include('common.error')
 
-        <form action="create/store" method="post" class="form">
+        <form action="create/store" method="post" class="form" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group">
                 <label for="title" class="control-label">記事タイトル</label>
@@ -26,6 +26,14 @@
                     </select>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="file" class="control-label">画像</label>
+                <input id="file" type="file" name="image" class="form-inline">
+                @if ($errors->has('image'))
+                    {{ $errors->first('image') }}
+                @endif
+            </div>
+
             <div class="form-group">
                 <label for="contents" class="control-label">本文</label>
                 <div class="">
