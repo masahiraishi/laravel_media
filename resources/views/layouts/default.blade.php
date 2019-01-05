@@ -14,6 +14,7 @@
             border-bottom:solid 1px #ccc; color:#ccc;}
     </style>
     <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="/css/edit.css">
 
 </head>
 <body>

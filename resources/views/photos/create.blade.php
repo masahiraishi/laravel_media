@@ -1,3 +1,6 @@
+@extends('layouts.default')
+
+@section('content')
 <div>
 <h1>画像のアップロード</h1>
 
@@ -14,6 +17,18 @@
         </div>
     </fieldset>
 
-    <input type="submit" value="アップロード">
+    <input type="submit" value="アップロード" class="mb-30 mt-10">
 </form>
+    {{--画像登録一覧--}}
+    @foreach($photos as $photo)
+        <div class="panel panel-default">
+            <div class="panel-heading">アップロードした日付：{{$photo->created_at}}</div>
+            <ul class="list-group">
+                <li class="list-group-item" style="list-style: none;">
+                    <img src="{{$photo->path}}" height="100">
+                </li>
+            </ul>
+        </div>
+    @endforeach
 </div>
+@endsection
