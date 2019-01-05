@@ -10,8 +10,9 @@ class Post extends Model
 
     public static $rules = [
       'title' =>'required',
-      'content' =>'required',
+      'contents' =>'required|min:10',
       'cat_id' =>'required',
+      'image' => 'required|file|image|max:4000',
     ];
     public static $messages = [
       'title.required'=>'タイトルを正しく入力してください',
@@ -24,7 +25,7 @@ class Post extends Model
         return $this->hasMany('App\Comment','post_id');
     }
 
-    public function user(){
+    public function User(){
 
         return $this->belongsTo('User');
     }
@@ -32,5 +33,11 @@ class Post extends Model
     public function Category(){
         // 投稿は1つのカテゴリーに属する
         return $this->belongsTo('App\Category','cat_id');
+    }
+
+    public function Photo()
+    {
+//        投稿一つに対して今の所一つ画像
+        return $this->hasOne('App\Photo');
     }
 }

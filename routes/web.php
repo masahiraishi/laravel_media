@@ -17,5 +17,5 @@ Route::get('/', function () {
 
 
 Route::resource('media', 'PostsController');
-Route::post('media/create/store','PostsController@sotreBlog');
+Route::post('media/create/store','PostsController@storeBlog');
 Route::resource('/photos', 'PhotosController', ['only' => ['create', 'store']]);
