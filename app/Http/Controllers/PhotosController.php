@@ -27,8 +27,7 @@ class PhotosController extends Controller
         ]);
 
         $file = $params['image'];
-        var_dump($file);
-        exit;
+        
         $image = \Image::make(file_get_contents($file->getRealPath()));
         $image
             ->save(public_path().'/images/'.$file->hashName());

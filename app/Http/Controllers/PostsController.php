@@ -47,7 +47,7 @@ class PostsController extends Controller
         $post->content = $request->contents;
         $post->author_id = 0; // ひとまず
         $post->cat_id = $request->cat_id;
-        $post->photo_id = $photo->id;
+        $post->photo_id = $photo->id; // photo_id
         $post->comment_count = 0; // 初期値
         $post->save();
 

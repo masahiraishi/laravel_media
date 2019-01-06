@@ -7,6 +7,9 @@
         </h2>
         <p>カテゴリー:&nbsp;{{$post->category->name}}</p>
         <p>{{$post->content}}</p>
+        <div class="">
+            <img src="{{$post->photo->path}}" height="100">
+        </div>
         <hr>
         {{--コメントが存在すれば--}}
         @if(count($post->comments)>0)
@@ -18,6 +21,7 @@
             {{--{{$post_paginate->links()}}--}}
         @endif
 
+
         <h3>コメントを投稿</h3>
         {{--コメント投稿完了でメッセージ--}}
         @if(Session::has('message'))
@@ -25,10 +29,12 @@
                 <p>{{ Session::get('message') }}</p>
             </div>
         @endif
+
         {{--エラーメッセージ--}}
         @foreach($errors->all() as $message)
             <p class="bg-danger">{{$message}}</p>
         @endforeach
+
         {{--コメント投稿--}}
         <form action="/comment" class="form" method="post">
             {{csrf_field()}}
