@@ -24,6 +24,7 @@
             <a href="{{url('/media')}}" class="navbar-brand">
                 LaravelPicks
             </a>
+            <a href="{{url('/admin')}}" class="right">login</a>
         </div>
     </div>
 </nav>
@@ -31,7 +32,7 @@
     @yield('content')
 </div>
 <div class="footer">
-    copyright 2018 MASASHI.
+    <p class="tac">copyright 2018 MASASHI.</p>
 </div>
 </body>
 </html>

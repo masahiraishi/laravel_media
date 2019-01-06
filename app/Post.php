@@ -38,6 +38,6 @@ class Post extends Model
     public function Photo()
     {
 //        投稿一つに対して今の所一つ画像
-        return $this->hasOne('App\Photo');
+        return $this->belongsTo('App\Photo');
     }
 }
