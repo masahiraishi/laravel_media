@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
+
 use Illuminate\Http\Request;
+use App\Comment;
+use App\Post;
 
 class CommentsController extends Controller
 {
@@ -17,6 +21,8 @@ class CommentsController extends Controller
         $comment->commenter = $request->commenter;
         $comment->comment = $request->comment;
         $comment->post_id = $request->post_id;
+        $comment->email = "xyz@gmail.com";
+        $comment->approved = 0;
         $comment->save();
 
 //コメント回数
