@@ -31,7 +31,7 @@ class CommentsController extends Controller
         $post->comment_count = $post->comment_count + 1;
         $post->save();
         return back()
-            ->with('message','投稿が完了しました')
+            ->with('message','投稿が完了致しました')
             ->withInput();
     }
 }
