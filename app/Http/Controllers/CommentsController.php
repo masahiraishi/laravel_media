@@ -34,6 +34,7 @@ class CommentsController extends Controller
             ->with('message','投稿が完了致しました')
             ->withInput();
     }
+
 }
 
 
