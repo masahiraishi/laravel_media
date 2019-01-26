@@ -7,9 +7,12 @@
         </h2>
         <p>カテゴリー:&nbsp;{{$post->category->name}}</p>
         <p>{{$post->content}}</p>
+        @if(count($post->photo)>0)
+            {{--写真が存在しなければスルー--}}
         <div class="">
             <img src="{{$post->photo->path}}" height="100">
         </div>
+        @endif
         <hr>
         {{--コメントが存在すれば--}}
         @if(count($post->comments)>0)
