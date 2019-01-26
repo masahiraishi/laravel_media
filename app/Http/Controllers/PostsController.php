@@ -60,7 +60,9 @@ class PostsController extends Controller
     public function showCategory($id){
 //カテゴリ名の取得
         $category_title = Category::find($id);
-        $category_posts =  Post::where('cat_id',$id)->get();
+//　カラムが指定値と等しいかどうか
+        $category_posts =  Post::where('cat_id',$id)
+                            ->orderBy('created_at','desc')->paginate(5);
 
         return view('media.category',['category_posts'=>$category_posts,
                 'category_title'=>$category_title]);
