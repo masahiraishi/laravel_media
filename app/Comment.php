@@ -15,6 +15,7 @@ class Comment extends Model
     public static $messages = [
         'commenter.required' => 'タイトルを正しく入力してください。',
         'comment.required' => '本文を正しく入力してください。',
+//        'email.required' =>'メールアドレスを正しく入力してください',
     ];
 
 
