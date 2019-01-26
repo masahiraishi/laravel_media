@@ -18,5 +18,7 @@ Route::get('/', function () {
 
 Route::resource('media', 'PostsController');
 Route::post('media/create/store','PostsController@storeBlog');
+Route::get('media/category/{category}', 'PostsController@showCategory');
+
 Route::resource('/photos', 'PhotosController', ['only' => ['create', 'store']]);
 Route::resource('comment','CommentsController');
