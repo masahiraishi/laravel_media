@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Photo;
+use App\Category;
 
 class PostsController extends Controller
 {
@@ -54,4 +55,14 @@ class PostsController extends Controller
         return back()->with('message','投稿が完了しました');
     }
 
+
+//カテゴリごとの記事表示
+    public function showCategory($id){
+//カテゴリ名の取得
+        $category_title = Category::find($id);
+        $category_posts =  Post::where('cat_id',$id)->get();
+
+        return view('media.category',['category_posts'=>$category_posts,
+                'category_title'=>$category_title]);
+    }
 }
